@@ -27,4 +27,5 @@ GitHub Actions 会构建 `x86_64-unknown-linux-musl`，上传 zip、deb、sha256
 
 ```bash
 dpkg-buildpackage -us -uc -b
+scripts/build-debian-source.sh
 ```
