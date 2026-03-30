@@ -13,8 +13,8 @@ cargo run -- pipe -s 1 --device-info
 打 tag 即可：
 
 ```bash
-git tag v0.1.0
-git push origin v0.1.0
+git tag vX.Y.Z
+git push origin vX.Y.Z
 ```
 
 GitHub Actions 会构建 `x86_64-unknown-linux-musl`，上传 zip、sha256 和 `install.sh`。

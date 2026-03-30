@@ -2,6 +2,7 @@
 set -euo pipefail
 
 repo="__REPOSITORY__"
+repo_placeholder="__REPOSITORY_PLACEHOLDER__"
 keep_temp=0
 dry_run=0
 
@@ -26,7 +27,7 @@ while [[ $# -gt 0 ]]; do
   esac
 done
 
-if [[ "$repo" == "__REPOSITORY__" ]]; then
+if [[ "$repo" == "$repo_placeholder" ]]; then
   echo "repo not configured, pass --repo owner/name or use the release asset version" >&2
   exit 1
 fi
