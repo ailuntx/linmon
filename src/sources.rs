@@ -402,7 +402,11 @@ fn probe_gpu_info() -> (String, String, String) {
                 .map(|s| s.trim().to_string())
                 .filter(|s| !s.is_empty())
                 .unwrap_or_else(|| "NVIDIA GPU".to_string());
-            return (name, "NVIDIA".to_string(), nvidia_smi.to_string_lossy().into_owned());
+            return (
+                name,
+                "NVIDIA".to_string(),
+                nvidia_smi.to_string_lossy().into_owned(),
+            );
         }
     }
 
