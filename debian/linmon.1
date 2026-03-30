@@ -1,0 +1,45 @@
+.TH LINMON 1 "March 2026" "linmon 0.1.3" "User Commands"
+.SH NAME
+linmon \- Linux terminal monitor for CPU and GPU metrics
+.SH SYNOPSIS
+.B linmon
+[\fB-i\fR, \fB--interval\fR \fIMILLISECONDS\fR]
+.br
+.B linmon
+\fBdebug\fR
+.br
+.B linmon
+\fBpipe\fR [\fB-s\fR, \fB--samples\fR \fICOUNT\fR] [\fB--device-info\fR]
+[\fB-i\fR, \fB--interval\fR \fIMILLISECONDS\fR]
+.SH DESCRIPTION
+.B linmon
+shows CPU, swap, memory and NVIDIA GPU metrics in a terminal UI.
+It also supports one-shot debug output and JSON streaming mode.
+.SH COMMANDS
+.TP
+.B linmon
+Start the interactive terminal UI.
+.TP
+.B linmon debug
+Print device info and one metrics sample as JSON.
+.TP
+.B linmon pipe
+Print metrics as JSON. Use \fB-s\fR 0 for continuous output.
+.SH OPTIONS
+.TP
+.BR \-i ", " \-\-interval " " \fIMILLISECONDS\fR
+Refresh interval in milliseconds.
+.TP
+.BR \-s ", " \-\-samples " " \fICOUNT\fR
+Number of JSON samples in pipe mode. Zero means continuous output.
+.TP
+.B \-\-device-info
+Append device information in pipe mode.
+.SH FILES
+.TP
+.I ~/.config/linmon/config.json
+User configuration.
+.SH AUTHORS
+ailuntz
+.SH HOMEPAGE
+https://github.com/ailuntz/linmon

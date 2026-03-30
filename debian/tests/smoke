@@ -1,0 +1,5 @@
+#!/bin/sh
+set -e
+
+linmon --help >/dev/null
+linmon pipe -s 1 >/dev/null

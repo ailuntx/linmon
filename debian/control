@@ -1,0 +1,35 @@
+Source: linmon
+Section: utils
+Priority: optional
+Maintainer: ailuntz <130897222+ailuntz@users.noreply.github.com>
+Build-Depends:
+ debhelper-compat (= 13),
+ dh-cargo,
+ cargo:native,
+ rustc:native,
+ librust-chrono-dev,
+ librust-clap-dev,
+ librust-clap-derive-dev,
+ librust-crossterm-dev,
+ librust-ratatui-dev,
+ librust-serde-dev,
+ librust-serde-derive-dev,
+ librust-serde-json-dev
+Standards-Version: 4.7.2
+Rules-Requires-Root: no
+Homepage: https://github.com/ailuntz/linmon
+Vcs-Browser: https://github.com/ailuntz/linmon
+Vcs-Git: https://github.com/ailuntz/linmon.git
+
+Package: linmon
+Architecture: linux-any
+Depends:
+ ${misc:Depends},
+ ${shlibs:Depends}
+Built-Using: ${cargo:Built-Using}
+X-Cargo-Built-Using: ${cargo:X-Cargo-Built-Using}
+Description: Linux terminal monitor for CPU, memory and NVIDIA GPU metrics
+ linmon is a small terminal monitor for Linux and WSL2.
+ .
+ It shows CPU, swap, memory and NVIDIA GPU metrics in an interactive TUI,
+ and also supports JSON output for scripts and debugging.

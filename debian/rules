@@ -1,0 +1,13 @@
+#!/usr/bin/make -f
+
+export DEB_BUILD_MAINT_OPTIONS = hardening=+all
+export CARGO_INCREMENTAL = 0
+
+%:
+	dh $@ --buildsystem=cargo --with cargo
+
+override_dh_auto_build:
+	dh_auto_build -- build --release --locked
+
+override_dh_auto_test:
+	dh_auto_test -- test --release --locked

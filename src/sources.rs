@@ -280,12 +280,13 @@ fn read_cpu_freq_mhz() -> u32 {
     let mut mhz_sum = 0f64;
     let mut mhz_count = 0f64;
     for line in body.lines() {
-        if let Some((key, value)) = line.split_once(':')
-            && key.trim() == "cpu MHz"
-            && let Ok(parsed) = value.trim().parse::<f64>()
-        {
-            mhz_sum += parsed;
-            mhz_count += 1.0;
+        if let Some((key, value)) = line.split_once(':') {
+            if key.trim() == "cpu MHz" {
+                if let Ok(parsed) = value.trim().parse::<f64>() {
+                    mhz_sum += parsed;
+                    mhz_count += 1.0;
+                }
+            }
         }
     }
 
@@ -394,19 +395,20 @@ fn probe_gpu_info() -> (String, String, String) {
         if let Ok(output) = Command::new(&nvidia_smi)
             .args(["--query-gpu=name", "--format=csv,noheader"])
             .output()
-            && output.status.success()
         {
-            let name = String::from_utf8_lossy(&output.stdout)
-                .lines()
-                .next()
-                .map(|s| s.trim().to_string())
-                .filter(|s| !s.is_empty())
-                .unwrap_or_else(|| "NVIDIA GPU".to_string());
-            return (
-                name,
-                "NVIDIA".to_string(),
-                nvidia_smi.to_string_lossy().into_owned(),
-            );
+            if output.status.success() {
+                let name = String::from_utf8_lossy(&output.stdout)
+                    .lines()
+                    .next()
+                    .map(|s| s.trim().to_string())
+                    .filter(|s| !s.is_empty())
+                    .unwrap_or_else(|| "NVIDIA GPU".to_string());
+                return (
+                    name,
+                    "NVIDIA".to_string(),
+                    nvidia_smi.to_string_lossy().into_owned(),
+                );
+            }
         }
     }
 

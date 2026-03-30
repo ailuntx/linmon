@@ -1,6 +1,5 @@
 use ratatui::style::Color;
 use serde::{Deserialize, Serialize};
-use serde_inline_default::serde_inline_default;
 
 const COLORS_OPTIONS: [Color; 7] = [
     Color::Green,
@@ -18,23 +17,38 @@ pub enum ViewType {
     Gauge,
 }
 
-#[serde_inline_default]
 #[derive(Debug, Serialize, Deserialize)]
 pub struct Config {
-    #[serde_inline_default(ViewType::Sparkline)]
+    #[serde(default = "default_view_type")]
     pub view_type: ViewType,
 
-    #[serde_inline_default(COLORS_OPTIONS[0])]
+    #[serde(default = "default_color")]
     pub color: Color,
 
-    #[serde_inline_default(1000)]
+    #[serde(default = "default_interval")]
     pub interval: u32,
 }
 
 impl Default for Config {
     fn default() -> Self {
-        serde_json::from_str("{}").unwrap()
+        Self {
+            view_type: default_view_type(),
+            color: default_color(),
+            interval: default_interval(),
+        }
     }
+}
+
+fn default_view_type() -> ViewType {
+    ViewType::Sparkline
+}
+
+fn default_color() -> Color {
+    COLORS_OPTIONS[0]
+}
+
+fn default_interval() -> u32 {
+    1000
 }
 
 impl Config {
