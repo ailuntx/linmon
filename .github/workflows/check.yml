@@ -1,0 +1,49 @@
+name: check
+
+on:
+  push:
+    branches:
+      - '**'
+    tags-ignore:
+      - 'v*'
+    paths:
+      - .github/workflows/*.yml
+      - Cargo.toml
+      - Cargo.lock
+      - LICENSE
+      - README.md
+      - DEVELOPMENT.md
+      - install.sh
+      - src/**
+      - scripts/**
+
+jobs:
+  check:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: install musl tools
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y musl-tools
+
+      - uses: dtolnay/rust-toolchain@stable
+        with:
+          components: rustfmt
+          targets: x86_64-unknown-linux-musl
+
+      - uses: Swatinem/rust-cache@v2
+
+      - run: chmod +x install.sh scripts/package.sh
+      - run: cargo fmt --check
+      - run: cargo check --locked
+      - run: cargo build --release --locked --target x86_64-unknown-linux-musl
+      - run: ./install.sh --repo example/linmon --dry-run
+      - run: ./scripts/package.sh "$GITHUB_SHA" ./target/x86_64-unknown-linux-musl/release/linmon
+
+      - uses: actions/upload-artifact@v4
+        with:
+          name: linmon-linux-x86_64
+          path: dist/*.zip
+          retention-days: 7
