@@ -1,7 +1,7 @@
 Source: linmon
 Section: utils
 Priority: optional
-Maintainer: ailuntz <130897222+ailuntz@users.noreply.github.com>
+Maintainer: ailuntz <ailuntz@icloud.com>
 Build-Depends:
  debhelper-compat (= 13),
  dh-cargo,
