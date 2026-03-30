@@ -26,7 +26,7 @@ jobs:
       - name: install musl tools
         run: |
           sudo apt-get update
-          sudo apt-get install -y musl-tools
+          sudo apt-get install -y musl-tools dpkg-dev apt-utils
 
       - uses: dtolnay/rust-toolchain@stable
         with:
@@ -35,13 +35,14 @@ jobs:
 
       - uses: Swatinem/rust-cache@v2
 
-      - run: chmod +x install.sh scripts/package.sh scripts/package-deb.sh
+      - run: chmod +x install.sh scripts/package.sh scripts/package-deb.sh scripts/build-apt-repo.sh
       - run: cargo fmt --check
       - run: cargo check --locked
       - run: cargo build --release --locked --target x86_64-unknown-linux-musl
       - run: ./install.sh --repo example/linmon --dry-run
       - run: ./scripts/package.sh "$GITHUB_SHA" ./target/x86_64-unknown-linux-musl/release/linmon
       - run: ./scripts/package-deb.sh 0.0.0~check ./target/x86_64-unknown-linux-musl/release/linmon
+      - run: ./scripts/build-apt-repo.sh dist/linmon_0.0.0~check_amd64.deb dist/pages
 
       - uses: actions/upload-artifact@v4
         with:
@@ -49,4 +50,5 @@ jobs:
           path: |
             dist/*.zip
             dist/*.deb
+            dist/pages/**
           retention-days: 7
