@@ -56,4 +56,18 @@ cat > "$out_dir/index.html" <<'EOF'
 </html>
 EOF
 
+cat > "$repo_dir/index.html" <<'EOF'
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>linmon apt repo</title>
+</head>
+<body>
+<pre>deb [trusted=yes] https://ailuntz.github.io/linmon/apt ./</pre>
+<pre>apt update && apt install linmon</pre>
+</body>
+</html>
+EOF
+
 echo "$repo_dir"
