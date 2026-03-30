@@ -1,6 +1,6 @@
 [package]
 name = "linmon"
-version = "0.1.1"
+version = "0.1.2"
 edition = "2024"
 description = "Linux CLI monitor for CPU and GPU"
 license = "MIT"

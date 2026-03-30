@@ -4,6 +4,8 @@ Linux 终端监控工具，支持普通 Linux 和 WSL2。
 
 ## 安装
 
+网络安装：
+
 ```bash
 curl -fsSL https://github.com/ailuntz/linmon/releases/latest/download/install.sh | bash
 ```
@@ -15,6 +17,14 @@ linmon
 linmon debug
 linmon pipe -s 1 --device-info
 ```
+
+Debian / Ubuntu：
+
+```bash
+sudo apt install ./linmon_<version>_amd64.deb
+```
+
+`deb` 包会安装到 `/usr/bin/linmon`，不会再复制到 `~/.local/bin`。
 
 ## 手动安装
 

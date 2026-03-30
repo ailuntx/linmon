@@ -17,4 +17,4 @@ git tag vX.Y.Z
 git push origin vX.Y.Z
 ```
 
-GitHub Actions 会构建 `x86_64-unknown-linux-musl`，上传 zip、sha256 和 `install.sh`。
+GitHub Actions 会构建 `x86_64-unknown-linux-musl`，上传 zip、deb、sha256 和 `install.sh`。

@@ -635,16 +635,18 @@ fn bootstrap_runtime_assets_linux() -> WithError<()> {
         return Ok(());
     };
 
-    fs::create_dir_all(&stable_dir)?;
-
     if let Ok(current_exe) = std::env::current_exe() {
+        if is_system_managed_exe(&current_exe) {
+            return Ok(());
+        }
+
+        fs::create_dir_all(&stable_dir)?;
         let stable_exe = stable_dir.join("linmon");
         if current_exe != stable_exe {
             copy_file_if_needed(&current_exe, &stable_exe)?;
         }
+        ensure_shell_path_contains(&stable_dir)?;
     }
-
-    ensure_shell_path_contains(&stable_dir)?;
     Ok(())
 }
 
@@ -719,4 +721,18 @@ fn ensure_profile_line(path: &Path, line: &str) -> WithError<()> {
     body.push('\n');
     fs::write(path, body)?;
     Ok(())
+}
+
+#[cfg(target_os = "linux")]
+fn is_system_managed_exe(path: &Path) -> bool {
+    [
+        "/usr/bin",
+        "/usr/local/bin",
+        "/usr/sbin",
+        "/bin",
+        "/sbin",
+        "/snap/bin",
+    ]
+    .iter()
+    .any(|prefix| path.starts_with(Path::new(prefix)))
 }
