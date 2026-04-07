@@ -7,7 +7,7 @@ Linux 终端监控工具，支持普通 Linux 和 WSL2。
 网络安装：
 
 ```bash
-curl -fsSL https://github.com/ailuntz/linmon/releases/latest/download/install.sh | bash
+curl -fsSL https://github.com/ailuntx/linmon/releases/latest/download/install.sh | bash
 ```
 
 安装后会把 `linmon` 放到 `~/.local/bin`，并补 PATH。新开一个 shell 后直接执行：
@@ -29,7 +29,7 @@ sudo apt install ./linmon_<version>_amd64.deb
 APT 源：
 
 ```bash
-echo 'deb [trusted=yes] https://ailuntz.github.io/linmon/apt ./' | sudo tee /etc/apt/sources.list.d/linmon.list
+echo 'deb [trusted=yes] https://ailuntx.github.io/linmon/apt ./' | sudo tee /etc/apt/sources.list.d/linmon.list
 sudo apt update
 sudo apt install linmon
 ```

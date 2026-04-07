@@ -51,7 +51,7 @@ cat > "$out_dir/index.html" <<'EOF'
   <title>linmon apt repo</title>
 </head>
 <body>
-<pre>deb [trusted=yes] https://ailuntz.github.io/linmon/apt ./</pre>
+<pre>deb [trusted=yes] https://ailuntx.github.io/linmon/apt ./</pre>
 </body>
 </html>
 EOF
@@ -64,7 +64,7 @@ cat > "$repo_dir/index.html" <<'EOF'
   <title>linmon apt repo</title>
 </head>
 <body>
-<pre>deb [trusted=yes] https://ailuntz.github.io/linmon/apt ./</pre>
+<pre>deb [trusted=yes] https://ailuntx.github.io/linmon/apt ./</pre>
 <pre>apt update && apt install linmon</pre>
 </body>
 </html>

@@ -54,7 +54,7 @@ Priority: optional
 Architecture: amd64
 Maintainer: ailuntz <130897222+ailuntz@users.noreply.github.com>
 Installed-Size: ${installed_size}
-Homepage: https://github.com/ailuntz/linmon
+Homepage: https://github.com/ailuntx/linmon
 Description: Linux CLI monitor for CPU and GPU
  Terminal monitor for CPU, memory, power and NVIDIA GPU metrics on Linux and WSL2.
 EOF

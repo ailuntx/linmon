@@ -17,9 +17,9 @@ Build-Depends:
  librust-serde-json-dev
 Standards-Version: 4.7.2
 Rules-Requires-Root: no
-Homepage: https://github.com/ailuntz/linmon
-Vcs-Browser: https://github.com/ailuntz/linmon
-Vcs-Git: https://github.com/ailuntz/linmon.git
+Homepage: https://github.com/ailuntx/linmon
+Vcs-Browser: https://github.com/ailuntx/linmon
+Vcs-Git: https://github.com/ailuntx/linmon.git
 
 Package: linmon
 Architecture: linux-any
