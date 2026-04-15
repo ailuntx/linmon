@@ -1,13 +1,12 @@
 use crate::config::{Config, ViewType};
-use crate::metrics::{Metrics, zero_div};
-use crate::sources::{DeviceInfo, Sampler, WithError, load_device_info};
+use crate::metrics::{zero_div, Metrics};
+use crate::sources::{load_device_info, DeviceInfo, Sampler, WithError};
 use crossterm::{
-    ExecutableCommand,
     event::{self, KeyCode, KeyModifiers},
-    terminal,
+    terminal, ExecutableCommand,
 };
 use ratatui::{backend::CrosstermBackend, prelude::*, widgets::*};
-use std::sync::{Arc, RwLock, mpsc};
+use std::sync::{mpsc, Arc, RwLock};
 use std::time::{Duration, Instant};
 
 const GB: u64 = 1024 * 1024 * 1024;
@@ -188,7 +187,11 @@ fn run_sampler_thread(tx: mpsc::Sender<Event>, msec: Arc<RwLock<u32>>) {
 }
 
 fn avg2(a: f64, b: f64) -> f64 {
-    if a == 0.0 { b } else { (a + b) / 2.0 }
+    if a == 0.0 {
+        b
+    } else {
+        (a + b) / 2.0
+    }
 }
 
 #[derive(Debug, Default)]

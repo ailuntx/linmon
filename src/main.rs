@@ -4,8 +4,8 @@ mod metrics;
 mod sources;
 
 use app::App;
-use clap::{CommandFactory, Parser, Subcommand, parser::ValueSource};
-use sources::{Sampler, WithError, bootstrap_runtime_assets, load_device_info};
+use clap::{parser::ValueSource, CommandFactory, Parser, Subcommand};
+use sources::{bootstrap_runtime_assets, load_device_info, Sampler, WithError};
 
 #[derive(Debug, Subcommand)]
 enum Commands {
