@@ -18,8 +18,8 @@ Build-Depends:
 Standards-Version: 4.7.2
 Rules-Requires-Root: no
 Homepage: https://github.com/ailuntx/linmon
-Vcs-Browser: https://github.com/ailuntx/linmon
-Vcs-Git: https://github.com/ailuntx/linmon.git
+Vcs-Browser: https://salsa.debian.org/ailuntz/linmon-debian
+Vcs-Git: https://salsa.debian.org/ailuntz/linmon-debian.git
 
 Package: linmon
 Architecture: linux-any

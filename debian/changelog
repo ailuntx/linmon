@@ -1,3 +1,10 @@
+linmon (0.1.3-2) unstable; urgency=medium
+
+  * Refresh Debian packaging metadata.
+  * Point Vcs fields to the Salsa packaging repository.
+
+ -- ailuntz <ailuntz@icloud.com>  Thu, 16 Apr 2026 17:08:18 +0800
+
 linmon (0.1.3-1) unstable; urgency=medium
 
   * Initial release.
